@@ -1,0 +1,6 @@
+{
+  "name": "Digital Growth Lab",
+  "description": "Scale customer acquisition with AI digital marketing. Master digital marketing strategies, explore latest AI marketing trends, and simulate algorithmic ROI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
