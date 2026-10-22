@@ -58,6 +58,156 @@ export const SEO_DATA: Record<string, PageSeoMetadata> = {
       }
     ]
   },
+  whatIsAi: {
+    path: '/what-is-ai-marketing/',
+    canonicalUrl: `${SITE_URL}/what-is-ai-marketing/`,
+    primaryKeyword: 'What is AI marketing',
+    relatedKeywords: ['AI in digital marketing', 'Automated marketing intelligence'],
+    searchIntent: 'Informational',
+    title: 'What is AI Marketing? Complete Guide to Machine-Driven Growth',
+    metaDescription: 'Understand what AI marketing is, how it differs from traditional marketing, and why machine learning transforms segmentation, bidding, and creative scale.',
+    ogTitle: 'What is AI Marketing? Comprehensive Beginner to Advanced Guide',
+    ogDescription: 'Discover how machine learning, predictive algorithms, and automated creative testing revolutionize digital marketing efficiency.',
+    ogType: 'website',
+    ogImage: `${SITE_URL}/og-cover.jpg`,
+    twitterCard: 'summary_large_image',
+    schemaType: 'WebSite',
+    faqs: [
+      {
+        question: 'How does AI digital marketing outperform traditional marketing?',
+        answer: 'AI digital marketing outperforms traditional marketing by substituting weeks of manual campaign reviews with automated multi-armed bandit creative testing, micro-behavioral clustering, and sub-second bid adjustments.'
+      },
+      {
+        question: 'What is the fastest way to implement predictive marketing automation?',
+        answer: 'Configure server-side conversion telemetry (CAPI), set up rapid prompt-based creative testing, and enable value-based algorithmic bidding.'
+      }
+    ]
+  },
+  pillars: {
+    path: '/core-pillars/',
+    canonicalUrl: `${SITE_URL}/core-pillars/`,
+    primaryKeyword: 'AI marketing pillars',
+    relatedKeywords: ['Autonomous ad optimization', 'Generative engine optimization'],
+    searchIntent: 'Informational',
+    title: 'The 6 Core Pillars of AI Digital Marketing | Digital Growth Lab',
+    metaDescription: 'Explore the 6 fundamental disciplines of modern AI marketing: creative synthesis, predictive bidding, audience LTV modeling, conversational leads, GEO, and MMM.',
+    ogTitle: 'The 6 Core Pillars of Modern AI Digital Marketing',
+    ogDescription: 'Deep dive into the six algorithmic competencies that power modern high-growth customer acquisition.',
+    ogType: 'website',
+    ogImage: `${SITE_URL}/og-cover.jpg`,
+    twitterCard: 'summary_large_image',
+    schemaType: 'WebSite',
+    faqs: [
+      {
+        question: 'What are the most critical pillars of AI marketing?',
+        answer: 'The six foundational pillars are Autonomous Creative Synthesis, Predictive Auction Bidding, LTV Modeling, Conversational Lead Qualification, Generative Engine Optimization (GEO), and Marketing Mix Modeling (MMM).'
+      },
+      {
+        question: 'Which AI marketing pillar should performance teams deploy first?',
+        answer: 'Most teams start with autonomous creative variation testing and server-side signal feeding, followed by value-based automated bidding.'
+      }
+    ]
+  },
+  simulator: {
+    path: '/roi-simulator/',
+    canonicalUrl: `${SITE_URL}/roi-simulator/`,
+    primaryKeyword: 'AI marketing ROI calculator',
+    relatedKeywords: ['Marketing growth simulator', 'Ad spend ROI modeling'],
+    searchIntent: 'Informational / Commercial',
+    title: 'Interactive AI Marketing ROI Simulator | Digital Growth Lab',
+    metaDescription: 'Simulate your revenue expansion and operational hours saved by switching to algorithmic marketing. Test custom ad spend, CVR, and AOV inputs.',
+    ogTitle: 'Interactive AI Marketing Growth & ROI Simulator',
+    ogDescription: 'Calculate projected ROAS uplift, incremental customer acquisitions, and hours saved with algorithmic marketing systems.',
+    ogType: 'website',
+    ogImage: `${SITE_URL}/og-cover.jpg`,
+    twitterCard: 'summary_large_image',
+    schemaType: 'WebSite',
+    faqs: [
+      {
+        question: 'How is the AI marketing ROI uplift calculated?',
+        answer: 'The simulator models empirical multi-armed bandit creative lift (+25-40% conversion rate improvement), auction efficiency gains (-18-24% wasted clicks), and automated task elimination.'
+      },
+      {
+        question: 'How many operational hours can AI marketing save monthly?',
+        answer: 'Depending on monthly ad spend and channel complexity, teams typically reclaim between 18 and 60 hours per month previously lost to manual spreadsheet reporting and manual bid tweaks.'
+      }
+    ]
+  },
+  copyLab: {
+    path: '/copy-lab/',
+    canonicalUrl: `${SITE_URL}/copy-lab/`,
+    primaryKeyword: 'AI copy lab',
+    relatedKeywords: ['AI ad copy generator', 'Psychographic copywriting tool'],
+    searchIntent: 'Informational / Commercial',
+    title: 'Interactive AI Copy & Ad Lab | Digital Growth Lab',
+    metaDescription: 'Test how artificial intelligence generates distinct psychographic ad hooks, headlines, and call-to-actions with predicted CTR benchmark scores.',
+    ogTitle: 'Interactive AI Copy & Ad Variant Lab',
+    ogDescription: 'Experience real-time AI ad generation across B2B SaaS, E-commerce, and professional services with psychological angle diagnostics.',
+    ogType: 'website',
+    ogImage: `${SITE_URL}/og-cover.jpg`,
+    twitterCard: 'summary_large_image',
+    schemaType: 'WebSite',
+    faqs: [
+      {
+        question: 'How does AI synthesize high-converting ad angles?',
+        answer: 'AI analyzes customer review databases, social objection threads, and historical CTR benchmarks to formulate angles focused on pain-points, social proof, aspirational lifestyle, or immediate ROI.'
+      },
+      {
+        question: 'Can AI ad copy outperform human copywriters?',
+        answer: 'AI paired with a human editor consistently outperforms human-only or AI-only workflows by enabling rapid testing of dozens of permutations in the ad auction.'
+      }
+    ]
+  },
+  playbook: {
+    path: '/playbook/',
+    canonicalUrl: `${SITE_URL}/playbook/`,
+    primaryKeyword: 'AI marketing playbook',
+    relatedKeywords: ['90 day AI implementation roadmap', 'Growth marketing framework'],
+    searchIntent: 'Informational',
+    title: 'The 90-Day AI Marketing Implementation Playbook | Digital Growth Lab',
+    metaDescription: 'Follow our structured 3-phase roadmap to transition from manual ad tweaking to a self-optimizing growth engine in 90 days.',
+    ogTitle: 'The 90-Day AI Marketing Execution Playbook',
+    ogDescription: 'Step-by-step technical deliverables for data signal cleansing, autonomous creative testing, and closed-loop predictive pacing.',
+    ogType: 'website',
+    ogImage: `${SITE_URL}/og-cover.jpg`,
+    twitterCard: 'summary_large_image',
+    schemaType: 'WebSite',
+    faqs: [
+      {
+        question: 'What is covered in the 90-day AI marketing roadmap?',
+        answer: 'Phase 1 focuses on First-Party Signal Cleanse; Phase 2 deploys Autonomous Creative Multi-Armed Bandit Testing; Phase 3 activates Predictive Pacing, GEO, and MMM.'
+      },
+      {
+        question: 'What is the most critical milestone in the first 30 days?',
+        answer: 'Deploying server-side Conversions API (CAPI) and establishing an offline conversion feedback loop to feed clean margin data back to ad algorithms.'
+      }
+    ]
+  },
+  articlesIndex: {
+    path: '/articles/',
+    canonicalUrl: `${SITE_URL}/articles/`,
+    primaryKeyword: 'AI marketing publications',
+    relatedKeywords: ['Growth research guides', 'Digital marketing tutorials'],
+    searchIntent: 'Informational',
+    title: 'Articles & Research Publications | Digital Growth Lab',
+    metaDescription: 'Explore comprehensive, original research guides on AI marketing tools, complete beginner SEO, and high-velocity content marketing strategies.',
+    ogTitle: 'Digital Growth Lab Articles & Research Publications',
+    ogDescription: 'Read in-depth manuals and verified playbooks for scaling performance marketing in the artificial intelligence era.',
+    ogType: 'website',
+    ogImage: `${SITE_URL}/og-cover.jpg`,
+    twitterCard: 'summary_large_image',
+    schemaType: 'WebSite',
+    faqs: [
+      {
+        question: 'What research topics does Digital Growth Lab cover?',
+        answer: 'We publish comprehensive guides on entry-level AI marketing stacks, organic search optimization and GEO, and modern content architecture.'
+      },
+      {
+        question: 'How often are the Digital Growth Lab guides updated?',
+        answer: 'Our research guides are reviewed and updated every quarter to reflect recent AI algorithm shifts and ad network updates.'
+      }
+    ]
+  },
   articleTools: {
     path: '/blog/ai-marketing-tools-for-beginners/',
     canonicalUrl: `${SITE_URL}/blog/ai-marketing-tools-for-beginners/`,

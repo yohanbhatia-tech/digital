@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ArrowLeft, 
-  Clock, 
-  Calendar, 
-  User, 
   Share2, 
-  Bookmark, 
   ChevronRight, 
   Sparkles, 
   ArrowRight, 
   BookOpen,
-  CheckCircle2,
-  TrendingUp
+  Check
 } from 'lucide-react';
 import { ArticleMeta, BLOG_ARTICLES } from '../data/articlesData.ts';
 
@@ -35,6 +30,8 @@ export const ArticleLayout: React.FC<ArticleLayoutProps> = ({
   children,
   onOpenAudit,
 }) => {
+  const [copied, setCopied] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [article]);
@@ -50,21 +47,27 @@ export const ArticleLayout: React.FC<ArticleLayoutProps> = ({
     }
   };
 
+  const handleShare = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <div className="bg-white min-h-screen">
       {/* Top Breadcrumb Bar */}
-      <div className="border-b border-slate-100 bg-slate-50/60 py-3.5">
+      <div className="border-b border-slate-100 bg-slate-50/50 py-3.5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex items-center gap-2 text-xs font-medium text-slate-500 overflow-x-auto whitespace-nowrap">
+          <nav className="flex items-center gap-2 text-xs font-medium text-slate-500 overflow-x-auto whitespace-nowrap scrollbar-none">
             <Link to="/" className="hover:text-blue-600 transition-colors flex items-center gap-1">
               <span>Home</span>
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-            <Link to="/" className="hover:text-blue-600 transition-colors">
-              Digital Growth Lab
+            <ChevronRight className="w-3.5 h-3.5 text-slate-300 shrink-0" />
+            <Link to="/articles/" className="hover:text-blue-600 transition-colors">
+              Articles
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-            <span className="text-blue-600 font-semibold truncate max-w-xs sm:max-w-md">
+            <ChevronRight className="w-3.5 h-3.5 text-slate-300 shrink-0" />
+            <span className="text-slate-800 font-semibold truncate max-w-xs sm:max-w-md">
               {article.category}
             </span>
           </nav>
@@ -77,53 +80,50 @@ export const ArticleLayout: React.FC<ArticleLayoutProps> = ({
         {/* Back Link */}
         <div className="mb-6">
           <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-blue-600 transition-colors group"
+            to="/articles/"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 hover:text-blue-600 transition-colors group"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            <span>Back to Digital Growth Lab Home</span>
+            <span>All Research Publications</span>
           </Link>
         </div>
 
-        {/* Category & Metadata Badge Row */}
-        <div className="flex flex-wrap items-center gap-3 mb-5">
-          <span className="px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold uppercase tracking-wider">
-            {article.category}
-          </span>
-          <span className="inline-flex items-center gap-1.5 text-xs text-slate-500 font-medium">
-            <Clock className="w-3.5 h-3.5 text-slate-400" />
-            {article.readTime}
-          </span>
-          <span className="inline-flex items-center gap-1.5 text-xs text-slate-500 font-medium">
-            <BookOpen className="w-3.5 h-3.5 text-slate-400" />
-            {article.wordCount}
-          </span>
-          <span className="inline-flex items-center gap-1.5 text-xs text-slate-500 font-medium">
-            <Calendar className="w-3.5 h-3.5 text-slate-400" />
-            {article.publishDate}
-          </span>
+        {/* Clean Editorial Category Kicker */}
+        <div className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-3">
+          {article.category}
         </div>
 
         {/* Unique H1 Heading */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-[1.18] mb-6">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-[1.16] mb-5 text-balance">
           {article.title}
         </h1>
 
+        {/* Unboxed Metadata with Typographic Separators */}
+        <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 mb-6 font-medium">
+          <span>By {article.author.name}</span>
+          <span aria-hidden="true">·</span>
+          <span>{article.publishDate}</span>
+          <span aria-hidden="true">·</span>
+          <span>{article.readTime}</span>
+          <span aria-hidden="true">·</span>
+          <span>{article.wordCount}</span>
+        </div>
+
         {/* Article Subtitle / Lead Paragraph */}
-        <p className="text-lg sm:text-xl text-slate-600 leading-relaxed font-normal mb-8">
+        <p className="text-lg sm:text-xl text-slate-600 leading-relaxed font-normal mb-8 text-balance">
           {article.subtitle}
         </p>
 
         {/* Author Bio Bar */}
-        <div className="flex items-center justify-between flex-wrap gap-4 py-4 px-5 rounded-2xl bg-slate-50/80 border border-slate-200/80 mb-8">
+        <div className="flex items-center justify-between flex-wrap gap-4 py-4 px-5 rounded-2xl bg-slate-50/60 border border-slate-200/60 mb-8">
           <div className="flex items-center gap-3">
             <img
               src={article.author.avatar}
               alt={`Portrait of author ${article.author.name}, ${article.author.role}`}
-              width={44}
-              height={44}
+              width={40}
+              height={40}
               loading="lazy"
-              className="w-11 h-11 rounded-full object-cover ring-2 ring-blue-100"
+              className="w-10 h-10 rounded-full object-cover ring-2 ring-slate-100"
             />
             <div>
               <div className="text-sm font-bold text-slate-900">{article.author.name}</div>
@@ -132,20 +132,26 @@ export const ArticleLayout: React.FC<ArticleLayoutProps> = ({
           </div>
           <div className="flex items-center gap-2">
             <button
-              onClick={() => {
-                navigator.clipboard.writeText(window.location.href);
-                alert('Article URL copied to clipboard!');
-              }}
+              onClick={handleShare}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold shadow-sm transition-all cursor-pointer"
             >
-              <Share2 className="w-3.5 h-3.5 text-slate-500" />
-              <span>Share</span>
+              {copied ? (
+                <>
+                  <Check className="w-3.5 h-3.5 text-emerald-600" />
+                  <span className="text-emerald-700">Link Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Share2 className="w-3.5 h-3.5 text-slate-500" />
+                  <span>Share Article</span>
+                </>
+              )}
             </button>
           </div>
         </div>
 
         {/* Hero Image with Optimized Alt Text and Explicit Dimensions */}
-        <div className="mb-12 rounded-3xl overflow-hidden border border-slate-200 shadow-xl shadow-slate-200/50 bg-slate-50">
+        <div className="mb-12 rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm bg-slate-50">
           <img
             src={article.image}
             alt={article.imageAlt}
@@ -160,12 +166,12 @@ export const ArticleLayout: React.FC<ArticleLayoutProps> = ({
         </div>
 
         {/* Table of Contents Card */}
-        <div className="p-6 rounded-2xl bg-blue-50/40 border border-blue-200/80 mb-12 shadow-sm">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-700 mb-3">
+        <div className="p-6 rounded-2xl bg-slate-50/60 border border-slate-200/80 mb-12 shadow-sm">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-700 mb-3">
             <BookOpen className="w-4 h-4 text-blue-600" />
             <span>Table of Contents</span>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold text-slate-700">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-medium text-slate-700">
             {tableOfContents.map((item, index) => (
               <button
                 key={item.id}
@@ -175,7 +181,7 @@ export const ArticleLayout: React.FC<ArticleLayoutProps> = ({
                 <span className="text-blue-600 font-mono text-[11px] shrink-0 mt-0.5">
                   0{index + 1}.
                 </span>
-                <span className={`line-clamp-1 ${item.isQuestion ? 'text-blue-900 font-bold' : ''}`}>
+                <span className={`line-clamp-1 ${item.isQuestion ? 'text-slate-900 font-semibold' : ''}`}>
                   {item.text}
                 </span>
               </button>
@@ -189,31 +195,31 @@ export const ArticleLayout: React.FC<ArticleLayoutProps> = ({
         </div>
 
         {/* Internal Hub Bridge & Links Box */}
-        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-slate-50 border border-slate-200 shadow-sm">
+        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-slate-50/60 border border-slate-200/80 shadow-sm">
           <h3 className="text-xl font-bold text-slate-900 mb-2 flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-blue-600" />
             <span>Continue Your Learning with Digital Growth Lab</span>
           </h3>
-          <p className="text-sm text-slate-600 leading-relaxed mb-6">
+          <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
             Explore our foundational tools, frameworks, and related strategic breakdowns designed for performance teams and forward-thinking marketers:
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <Link
-              to="/"
-              className="p-4 rounded-xl bg-white border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all group"
+              to="/roi-simulator/"
+              className="p-4 rounded-xl bg-white border border-slate-200/80 hover:border-blue-300 hover:shadow-sm transition-all group"
             >
-              <div className="text-xs font-bold text-blue-600 uppercase mb-1">Interactive System</div>
+              <div className="text-xs font-bold text-blue-600 uppercase mb-1">Growth Engine</div>
               <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                Digital Growth Lab Homepage &rarr;
+                ROI Simulator &rarr;
               </div>
-              <div className="text-xs text-slate-500 mt-1">Test the interactive AI Growth &amp; ROI Simulator.</div>
+              <div className="text-xs text-slate-500 mt-1">Simulate algorithmic ad spend upside.</div>
             </Link>
 
             {relatedArticles.map((rel) => (
               <Link
                 key={rel.slug}
                 to={rel.url}
-                className="p-4 rounded-xl bg-white border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all group"
+                className="p-4 rounded-xl bg-white border border-slate-200/80 hover:border-blue-300 hover:shadow-sm transition-all group"
               >
                 <div className="text-xs font-bold text-blue-600 uppercase mb-1">{rel.category}</div>
                 <div className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-1">
@@ -227,21 +233,21 @@ export const ArticleLayout: React.FC<ArticleLayoutProps> = ({
 
         {/* Bottom Growth Audit CTA */}
         {onOpenAudit && (
-          <div className="mt-12 p-8 rounded-3xl bg-gradient-to-tr from-blue-700 via-blue-600 to-blue-500 text-white shadow-xl shadow-blue-500/20 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="mt-12 p-8 rounded-3xl bg-blue-600 text-white shadow-sm text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <span className="text-xs font-extrabold uppercase tracking-widest text-blue-200 block mb-1">
+              <span className="text-xs font-bold uppercase tracking-widest text-blue-200 block mb-1">
                 Take Action
               </span>
               <h3 className="text-2xl font-black text-white mb-2">
                 Accelerate Your Growth with Algorithmic Marketing
               </h3>
-              <p className="text-sm text-blue-100 max-w-xl">
+              <p className="text-sm text-blue-100 max-w-xl font-normal">
                 Ready to deploy predictive bidding, multi-armed bandit creative testing, and automated lead intelligence? Get your instant readiness score.
               </p>
             </div>
             <button
               onClick={onOpenAudit}
-              className="px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-blue-700 font-bold text-sm shadow-md transition-all cursor-pointer whitespace-nowrap"
+              className="px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-blue-700 font-bold text-sm shadow-sm transition-all cursor-pointer whitespace-nowrap"
             >
               Get Free AI Audit
             </button>
@@ -249,21 +255,21 @@ export const ArticleLayout: React.FC<ArticleLayoutProps> = ({
         )}
 
         {/* Related Articles Section */}
-        <div className="mt-16 pt-12 border-t border-slate-200">
+        <div className="mt-16 pt-12 border-t border-slate-200/80">
           <div className="flex items-center justify-between mb-8">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-blue-600">
                 Related Reading
               </span>
-              <h3 className="text-2xl font-bold text-slate-900 mt-0.5">
+              <h2 className="text-2xl font-bold text-slate-900 mt-0.5">
                 More Guides from Digital Growth Lab
-              </h3>
+              </h2>
             </div>
             <Link
-              to="/"
+              to="/articles/"
               className="hidden sm:inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-700"
             >
-              <span>Back to Digital Growth Lab Home</span>
+              <span>View All Publications</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -274,7 +280,7 @@ export const ArticleLayout: React.FC<ArticleLayoutProps> = ({
                 key={rel.slug}
                 to={rel.url}
                 aria-label={`Read full guide: ${rel.title}`}
-                className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:shadow-lg hover:border-blue-300 transition-all flex flex-col justify-between"
+                className="group rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm hover:shadow-md hover:border-blue-300 transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="rounded-xl overflow-hidden mb-4 bg-slate-100 aspect-video">
@@ -287,19 +293,19 @@ export const ArticleLayout: React.FC<ArticleLayoutProps> = ({
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="flex items-center gap-2 text-xs text-slate-400 mb-2">
+                  <div className="flex items-center gap-2 text-xs text-slate-400 mb-2 font-medium">
                     <span className="font-semibold text-blue-600">{rel.category}</span>
-                    <span>•</span>
+                    <span>·</span>
                     <span>{rel.readTime}</span>
                   </div>
-                  <h4 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-2 mb-2">
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-2 mb-2">
                     {rel.title}
-                  </h4>
-                  <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                  </h3>
+                  <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed font-normal">
                     {rel.excerpt}
                   </p>
                 </div>
-                <div className="pt-4 mt-4 border-t border-slate-100 flex items-center text-xs font-bold text-blue-600 group-hover:translate-x-1 transition-transform">
+                <div className="pt-4 mt-4 border-t border-slate-100 flex items-center text-xs font-bold text-blue-600 group-hover:translate-x-0.5 transition-transform">
                   <span>Read Article</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-1" />
                 </div>

@@ -6,7 +6,7 @@ import {
   MessageSquareCode, 
   Search, 
   PieChart, 
-  CheckCircle, 
+  CheckCircle2, 
   ChevronRight, 
   Zap,
   Sparkles
@@ -123,27 +123,27 @@ export const PillarsSection: React.FC = () => {
   const activePillar = pillars.find(p => p.id === selectedPillarId) || pillars[0];
 
   return (
-    <section id="pillars" className="py-20 bg-slate-50/50 border-t border-slate-100">
+    <section id="pillars" className="py-20 bg-slate-50/40 border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold tracking-wide uppercase mb-3">
+          <div className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-2">
             Core Competencies
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4 text-balance">
             The 6 Pillars of the <span className="text-blue-600">AI Growth Lab</span>
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
             Every high-growth company in the modern era runs on these algorithmic pillars. Click any discipline to inspect tactical execution and verified benchmarks.
           </p>
         </div>
 
         {/* Interactive Pillars Grid + Detailed Display */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-6xl mx-auto">
           
           {/* Pillar Selector List (Left 5 cols) */}
-          <div className="lg:col-span-5 space-y-3">
+          <div className="lg:col-span-5 space-y-2.5">
             {pillars.map((pillar) => {
               const Icon = pillar.icon;
               const isSelected = pillar.id === selectedPillarId;
@@ -154,29 +154,29 @@ export const PillarsSection: React.FC = () => {
                   onClick={() => setSelectedPillarId(pillar.id)}
                   className={`w-full text-left p-4 rounded-xl border transition-all cursor-pointer flex items-center justify-between group ${
                     isSelected
-                      ? 'bg-white border-blue-600 shadow-md shadow-blue-500/10 ring-2 ring-blue-500/20'
-                      : 'bg-white/80 border-slate-200 hover:border-slate-300 hover:bg-white'
+                      ? 'bg-white border-blue-500 shadow-sm'
+                      : 'bg-white/80 border-slate-200/80 hover:border-slate-300 hover:bg-white'
                   }`}
                 >
                   <div className="flex items-center gap-3.5">
-                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${
+                    <div className={`w-9 h-9 rounded-lg flex items-center justify-center transition-colors shrink-0 ${
                       isSelected
-                        ? 'bg-blue-600 text-white'
+                        ? 'bg-blue-600 text-white shadow-sm'
                         : 'bg-blue-50 text-blue-600 group-hover:bg-blue-100'
                     }`}>
-                      <Icon className="w-5 h-5" />
+                      <Icon className="w-4 h-4" />
                     </div>
                     <div>
-                      <h4 className={`text-sm font-bold ${isSelected ? 'text-blue-700' : 'text-slate-900'}`}>
+                      <h3 className={`text-sm font-bold ${isSelected ? 'text-blue-700' : 'text-slate-900'}`}>
                         {pillar.title}
-                      </h4>
-                      <p className="text-xs text-slate-500 truncate max-w-[240px] sm:max-w-[280px]">
+                      </h3>
+                      <p className="text-xs text-slate-500 truncate max-w-[220px] sm:max-w-[260px] font-normal">
                         {pillar.tagline}
                       </p>
                     </div>
                   </div>
-                  <ChevronRight className={`w-5 h-5 transition-transform ${
-                    isSelected ? 'text-blue-600 translate-x-1' : 'text-slate-300 group-hover:text-slate-400'
+                  <ChevronRight className={`w-4 h-4 transition-transform shrink-0 ${
+                    isSelected ? 'text-blue-600 translate-x-0.5' : 'text-slate-300 group-hover:text-slate-400'
                   }`} />
                 </button>
               );
@@ -184,24 +184,23 @@ export const PillarsSection: React.FC = () => {
           </div>
 
           {/* Pillar Deep Dive Panel (Right 7 cols) */}
-          <div className="lg:col-span-7 bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-xl shadow-slate-100/70">
+          <div className="lg:col-span-7 bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
             
             <div className="flex items-start justify-between flex-wrap gap-4 pb-6 border-b border-slate-100">
               <div>
-                <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">
+                <span className="text-xs font-semibold text-blue-600 uppercase tracking-wider">
                   Technology: {activePillar.tech}
                 </span>
-                <h3 className="text-2xl font-black text-slate-900 mt-1">
+                <h3 className="text-2xl font-bold text-slate-900 mt-1">
                   {activePillar.title}
                 </h3>
               </div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold">
-                <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+              <div className="text-xs font-semibold text-blue-700 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
                 {activePillar.impactStat}
               </div>
             </div>
 
-            <p className="text-slate-700 text-base leading-relaxed my-6 font-normal">
+            <p className="text-slate-600 text-base leading-relaxed my-6 font-normal">
               {activePillar.description}
             </p>
 
@@ -213,20 +212,20 @@ export const PillarsSection: React.FC = () => {
               <div className="space-y-2.5">
                 {activePillar.keyTactics.map((tactic, i) => (
                   <div key={i} className="flex items-start gap-2.5 text-sm text-slate-700">
-                    <CheckCircle className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                     <span>{tactic}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Mini Case Study Note */}
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
-              <div className="flex items-center gap-2 text-xs font-bold text-slate-900 uppercase tracking-wide mb-1">
+            {/* Application Note */}
+            <div className="p-4 rounded-xl bg-slate-50/70 border border-slate-200/60">
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-800 uppercase tracking-wide mb-1">
                 <Zap className="w-3.5 h-3.5 text-blue-600" />
-                Verified Application Note
+                <span>Verified Application Note</span>
               </div>
-              <p className="text-xs sm:text-sm text-slate-600">
+              <p className="text-xs sm:text-sm text-slate-600 italic">
                 "{activePillar.caseNote}"
               </p>
             </div>
