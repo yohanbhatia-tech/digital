@@ -12,7 +12,8 @@ import {
   DollarSign, 
   Clock, 
   ArrowRight,
-  Zap
+  Zap,
+  ExternalLink
 } from 'lucide-react';
 
 interface ArticleToolsProps {
@@ -354,7 +355,18 @@ export const ArticleTools: React.FC<ArticleToolsProps> = ({ onOpenAudit }) => {
         </p>
 
         <p className="text-base text-slate-700 leading-relaxed">
-          Curious to see what algorithmic optimization could mean for your specific metrics? Head over to the <Link to="/" className="text-blue-600 font-semibold underline decoration-blue-300 hover:text-blue-800">Digital Growth Lab homepage</Link> and test our interactive <strong>Growth &amp; ROI Simulator</strong>. You can input your monthly ad spend and baseline conversion rate to simulate projected revenue gains and operational hours saved by moving to autonomous marketing systems.
+          Curious to see what algorithmic optimization could mean for your specific metrics? Test our interactive{' '}
+          <Link 
+            to="/roi-simulator/" 
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Opens Growth ROI Simulator in a new tab"
+            className="text-blue-600 font-semibold underline decoration-blue-300 hover:text-blue-800 inline-flex items-center gap-1"
+          >
+            <span>Growth &amp; ROI Simulator</span>
+            <ExternalLink className="w-3.5 h-3.5 text-blue-500 inline" />
+          </Link>
+          . You can input your monthly ad spend and baseline conversion rate to simulate projected revenue gains and operational hours saved by moving to autonomous marketing systems.
         </p>
 
       </ArticleLayout>

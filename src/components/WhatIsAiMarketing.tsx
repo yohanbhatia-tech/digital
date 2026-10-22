@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layers, Clock, TrendingUp, Users, Cpu, ShieldAlert, Sparkles, Check, ArrowRight, HelpCircle } from 'lucide-react';
+import { Layers, Clock, TrendingUp, Users, Cpu, ShieldAlert, Sparkles, Check, ArrowRight, HelpCircle, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const WhatIsAiMarketing: React.FC = () => {
@@ -205,7 +205,18 @@ export const WhatIsAiMarketing: React.FC = () => {
             </div>
 
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
-              Once this data infrastructure is established, marketing teams can scale organic search authority alongside paid acquisition. Combining an <strong>algorithmic growth engine</strong> with our structured <Link to="/blog/ai-content-marketing-strategy/" className="text-blue-600 font-semibold underline decoration-blue-300 hover:text-blue-800">AI Content Marketing Strategy</Link> ensures that your brand captures high-intent organic search queries while paid campaigns aggressively retarget interested prospects.
+              Once this data infrastructure is established, marketing teams can scale organic search authority alongside paid acquisition. Combining an <strong>algorithmic growth engine</strong> with our structured{' '}
+              <Link
+                to="/blog/ai-content-marketing-strategy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 font-semibold underline decoration-blue-300 hover:text-blue-800 inline-flex items-center gap-0.5"
+                title="Opens AI Content Marketing Strategy in a new tab"
+              >
+                <span>AI Content Marketing Strategy</span>
+                <ExternalLink className="w-3 h-3 text-blue-500 inline" />
+              </Link>{' '}
+              ensures that your brand captures high-intent organic search queries while paid campaigns aggressively retarget interested prospects.
             </p>
 
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/70 flex items-center justify-between flex-wrap gap-3">
@@ -214,10 +225,13 @@ export const WhatIsAiMarketing: React.FC = () => {
               </span>
               <Link 
                 to="/roi-simulator/" 
-                className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Opens Growth ROI Simulator in a new tab"
+                className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1.5"
               >
                 <span>Launch Interactive ROI Simulator</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ExternalLink className="w-3.5 h-3.5" />
               </Link>
             </div>
           </div>

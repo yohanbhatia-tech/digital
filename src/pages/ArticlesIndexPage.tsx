@@ -4,7 +4,7 @@ import { SEO_DATA } from '../config/seoConfig.ts';
 import { SectionPageHeader } from '../components/SectionPageHeader.tsx';
 import { BLOG_ARTICLES } from '../data/articlesData.ts';
 import { Link } from 'react-router-dom';
-import { ArrowRight, HelpCircle, Search, Filter } from 'lucide-react';
+import { ArrowRight, HelpCircle, Search, Filter, ExternalLink, BookOpen } from 'lucide-react';
 
 export const ArticlesIndexPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -80,6 +80,29 @@ export const ArticlesIndexPage: React.FC = () => {
             </div>
           </div>
 
+          {/* Dedicated Article Tab Strip - Each opens in a new tab on its unique URL */}
+          <div className="mb-8 p-3 rounded-2xl bg-blue-50/50 border border-blue-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-2 text-xs font-bold text-blue-900">
+              <BookOpen className="w-4 h-4 text-blue-600 shrink-0" />
+              <span>Dedicated Article Tabs (Opens each article in a new tab with unique URL):</span>
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              {BLOG_ARTICLES.map((art) => (
+                <Link
+                  key={art.slug}
+                  to={art.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-blue-200/80 text-xs font-semibold text-slate-700 hover:text-blue-600 hover:border-blue-400 shadow-xs transition-all"
+                  title={`Open ${art.title} in new tab`}
+                >
+                  <span className="truncate max-w-[150px]">{art.title.split(':')[0]}</span>
+                  <ExternalLink className="w-3 h-3 text-blue-600 shrink-0" />
+                </Link>
+              ))}
+            </div>
+          </div>
+
           {/* Articles Grid: Clean Editorial Styling */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {filteredArticles.map(article => (
@@ -90,8 +113,10 @@ export const ArticlesIndexPage: React.FC = () => {
                 <div>
                   <Link
                     to={article.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block relative aspect-video overflow-hidden bg-slate-100"
-                    aria-label={`Read article: ${article.title}`}
+                    aria-label={`Read article: ${article.title} (opens in new tab)`}
                   >
                     <img
                       src={article.image}
@@ -101,6 +126,10 @@ export const ArticlesIndexPage: React.FC = () => {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
+                    <span className="absolute top-3 right-3 px-2.5 py-1 rounded-lg bg-white/95 backdrop-blur-xs text-[10px] font-bold text-slate-800 flex items-center gap-1 shadow-xs border border-slate-200/60">
+                      <span>New Tab</span>
+                      <ExternalLink className="w-2.5 h-2.5 text-blue-600" />
+                    </span>
                   </Link>
 
                   <div className="p-6 sm:p-7">
@@ -110,8 +139,13 @@ export const ArticlesIndexPage: React.FC = () => {
                     </div>
 
                     <h2 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug mb-3">
-                      <Link to={article.url} className="hover:underline">
-                        {article.title}
+                      <Link 
+                        to={article.url} 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline flex items-start justify-between gap-2"
+                      >
+                        <span>{article.title}</span>
                       </Link>
                     </h2>
 
@@ -153,10 +187,13 @@ export const ArticlesIndexPage: React.FC = () => {
 
                     <Link
                       to={article.url}
-                      className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700 group-hover:translate-x-0.5 transition-transform"
+                      title="Open guide in new tab"
                     >
                       <span>Read Guide</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <ExternalLink className="w-3.5 h-3.5" />
                     </Link>
                   </div>
                 </div>

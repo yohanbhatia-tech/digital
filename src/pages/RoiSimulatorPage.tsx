@@ -4,7 +4,7 @@ import { SEO_DATA } from '../config/seoConfig.ts';
 import { SectionPageHeader } from '../components/SectionPageHeader.tsx';
 import { GrowthSimulator } from '../components/GrowthSimulator.tsx';
 import { Link } from 'react-router-dom';
-import { Sparkles, CheckCircle2, TrendingUp, Cpu, BookOpen } from 'lucide-react';
+import { Sparkles, CheckCircle2, TrendingUp, Cpu, BookOpen, ExternalLink } from 'lucide-react';
 
 interface RoiSimulatorPageProps {
   onOpenAudit: () => void;
@@ -78,10 +78,13 @@ export const RoiSimulatorPage: React.FC<RoiSimulatorPageProps> = ({ onOpenAudit 
                 </div>
                 <Link
                   to="/copy-lab/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Opens Interactive Copy Lab in a new tab"
                   className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700"
                 >
                   <span>Explore the Interactive Copy Lab</span>
-                  <TrendingUp className="w-4 h-4" />
+                  <ExternalLink className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>

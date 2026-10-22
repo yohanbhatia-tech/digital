@@ -4,7 +4,7 @@ import { SEO_DATA } from '../config/seoConfig.ts';
 import { SectionPageHeader } from '../components/SectionPageHeader.tsx';
 import { PillarsSection } from '../components/PillarsSection.tsx';
 import { Link } from 'react-router-dom';
-import { ArrowRight, BarChart3, Cpu, Sparkles } from 'lucide-react';
+import { ArrowRight, BarChart3, Cpu, Sparkles, ExternalLink } from 'lucide-react';
 
 interface PillarsPageProps {
   onOpenAudit: () => void;
@@ -50,9 +50,13 @@ export const PillarsPage: React.FC<PillarsPageProps> = ({ onOpenAudit }) => {
               <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
                 <Link
                   to="/roi-simulator/"
-                  className="px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-blue-700 font-bold text-xs shadow-md text-center transition-all cursor-pointer whitespace-nowrap"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Opens Growth ROI Simulator in a new tab"
+                  className="px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-blue-700 font-bold text-xs shadow-md text-center transition-all cursor-pointer whitespace-nowrap inline-flex items-center justify-center gap-1.5"
                 >
-                  Open ROI Simulator &rarr;
+                  <span>Open ROI Simulator</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
                 </Link>
                 <button
                   onClick={onOpenAudit}

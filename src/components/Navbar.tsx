@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Sparkles, ArrowRight, Menu, X, BarChart3, Cpu, BookOpen, ChevronDown, Rocket, Target, HelpCircle } from 'lucide-react';
+import { Sparkles, ArrowRight, Menu, X, BarChart3, Cpu, BookOpen, ChevronDown, Rocket, Target, HelpCircle, ExternalLink } from 'lucide-react';
 import { BLOG_ARTICLES } from '../data/articlesData.ts';
 
 interface NavbarProps {
@@ -41,33 +41,44 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
             </div>
           </Link>
 
-          {/* Desktop Nav - Every section opens on a unique URL */}
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+          {/* Desktop Nav - Every section opens on a unique URL in a new tab */}
+          <nav className="hidden md:flex items-center gap-5 text-sm font-medium">
             <Link 
               to="/what-is-ai-marketing/" 
-              className={`transition-colors py-1 px-2 rounded-lg ${
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Opens 'What is AI Marketing' in a new tab"
+              className={`inline-flex items-center gap-1 transition-colors py-1 px-2.5 rounded-lg ${
                 isActive('/what-is-ai-marketing') 
                   ? 'text-blue-600 font-semibold bg-blue-50/60' 
                   : 'text-slate-600 hover:text-blue-600'
               }`}
             >
-              What is AI Marketing
+              <span>What is AI Marketing</span>
+              <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-blue-600 shrink-0" />
             </Link>
 
             <Link 
               to="/core-pillars/" 
-              className={`transition-colors py-1 px-2 rounded-lg ${
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Opens 'Core Pillars' in a new tab"
+              className={`inline-flex items-center gap-1 transition-colors py-1 px-2.5 rounded-lg ${
                 isActive('/core-pillars') 
                   ? 'text-blue-600 font-semibold bg-blue-50/60' 
                   : 'text-slate-600 hover:text-blue-600'
               }`}
             >
-              Core Pillars
+              <span>Core Pillars</span>
+              <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-blue-600 shrink-0" />
             </Link>
 
             <Link 
               to="/roi-simulator/" 
-              className={`flex items-center gap-1.5 transition-colors py-1 px-2.5 rounded-lg ${
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Opens 'ROI Simulator' in a new tab"
+              className={`inline-flex items-center gap-1.5 transition-colors py-1 px-2.5 rounded-lg ${
                 isActive('/roi-simulator') 
                   ? 'text-blue-600 font-semibold bg-blue-50' 
                   : 'text-slate-700 font-semibold hover:text-blue-600'
@@ -75,6 +86,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
             >
               <BarChart3 className="w-4 h-4 text-blue-600" />
               <span>ROI Simulator</span>
+              <ExternalLink className="w-3 h-3 text-slate-400 shrink-0" />
             </Link>
             
             {/* Articles Dropdown & Direct Link */}
@@ -82,7 +94,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
               <div className="flex items-center">
                 <Link
                   to="/articles/"
-                  className={`transition-colors py-1 pl-2 pr-1 rounded-l-lg flex items-center gap-1.5 font-semibold ${
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Opens 'Articles Index' in a new tab"
+                  className={`transition-colors py-1 pl-2.5 pr-1 rounded-l-lg flex items-center gap-1.5 font-semibold ${
                     isActive('/articles') || location.pathname.startsWith('/blog')
                       ? 'text-blue-600 bg-blue-50/60' 
                       : 'text-slate-700 hover:text-blue-600'
@@ -90,6 +105,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
                 >
                   <BookOpen className="w-4 h-4 text-blue-600" />
                   <span>Articles</span>
+                  <ExternalLink className="w-3 h-3 text-slate-400 shrink-0" />
                 </Link>
                 <button
                   onClick={() => setArticlesDropdownOpen(!articlesDropdownOpen)}
@@ -110,37 +126,48 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
                     <span>Research Publications</span>
                     <Link 
                       to="/articles/" 
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={() => setArticlesDropdownOpen(false)}
-                      className="text-blue-600 hover:underline normal-case text-[11px]"
+                      className="text-blue-600 hover:underline normal-case text-[11px] inline-flex items-center gap-0.5"
                     >
-                      View Index &rarr;
+                      <span>View Index</span>
+                      <ExternalLink className="w-2.5 h-2.5" />
                     </Link>
                   </div>
                   {BLOG_ARTICLES.map((art) => (
                     <Link
                       key={art.slug}
                       to={art.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={() => setArticlesDropdownOpen(false)}
                       className="block p-2.5 rounded-xl hover:bg-blue-50/70 transition-colors group"
+                      title={`Open "${art.title}" in new tab`}
                     >
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-1">
-                        {art.title}
+                      <div className="flex items-center justify-between gap-1 text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                        <span className="line-clamp-1">{art.title}</span>
+                        <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-blue-600 shrink-0" />
                       </div>
                       <div className="text-[11px] text-slate-500 mt-0.5 flex items-center gap-2">
                         <span>{art.category}</span>
                         <span>•</span>
                         <span>{art.readTime}</span>
+                        <span>•</span>
+                        <span className="text-blue-600 font-semibold">New Tab</span>
                       </div>
                     </Link>
                   ))}
                   <div className="pt-1 border-t border-slate-100 mt-1">
                     <Link
                       to="/articles/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={() => setArticlesDropdownOpen(false)}
                       className="w-full p-2 rounded-lg text-xs font-bold text-blue-600 hover:bg-blue-50 transition-colors flex items-center justify-between"
                     >
                       <span>All Publications &amp; Search</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <ExternalLink className="w-3.5 h-3.5" />
                     </Link>
                   </div>
                 </div>
@@ -149,7 +176,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
 
             <Link 
               to="/copy-lab/" 
-              className={`flex items-center gap-1.5 transition-colors py-1 px-2 rounded-lg ${
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Opens 'Interactive Copy Lab' in a new tab"
+              className={`inline-flex items-center gap-1.5 transition-colors py-1 px-2.5 rounded-lg ${
                 isActive('/copy-lab') 
                   ? 'text-blue-600 font-semibold bg-blue-50/60' 
                   : 'text-slate-600 hover:text-blue-600'
@@ -157,17 +187,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
             >
               <Cpu className="w-4 h-4 text-blue-500" />
               <span>Copy Lab</span>
+              <ExternalLink className="w-3 h-3 text-slate-400 shrink-0" />
             </Link>
 
             <Link 
               to="/playbook/" 
-              className={`transition-colors py-1 px-2 rounded-lg ${
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Opens '90-Day Playbook' in a new tab"
+              className={`inline-flex items-center gap-1 transition-colors py-1 px-2.5 rounded-lg ${
                 isActive('/playbook') 
                   ? 'text-blue-600 font-semibold bg-blue-50/60' 
                   : 'text-slate-600 hover:text-blue-600'
               }`}
             >
-              Playbook
+              <span>Playbook</span>
+              <ExternalLink className="w-3 h-3 text-slate-400 shrink-0" />
             </Link>
           </nav>
 
@@ -209,78 +244,126 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
           </Link>
           <Link
             to="/what-is-ai-marketing/"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMobileMenuOpen(false)}
-            className={`w-full text-left py-2 px-3 rounded-lg block font-medium text-sm ${
+            className={`w-full text-left py-2 px-3 rounded-lg flex items-center justify-between font-medium text-sm ${
               isActive('/what-is-ai-marketing') ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-slate-700 hover:bg-slate-50'
             }`}
           >
-            What is AI Marketing
+            <span>What is AI Marketing</span>
+            <span className="flex items-center gap-1 text-[10px] text-blue-600 font-semibold">
+              <span>New Tab</span>
+              <ExternalLink className="w-3 h-3" />
+            </span>
           </Link>
           <Link
             to="/core-pillars/"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMobileMenuOpen(false)}
-            className={`w-full text-left py-2 px-3 rounded-lg block font-medium text-sm ${
+            className={`w-full text-left py-2 px-3 rounded-lg flex items-center justify-between font-medium text-sm ${
               isActive('/core-pillars') ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-slate-700 hover:bg-slate-50'
             }`}
           >
-            Core Pillars
+            <span>Core Pillars</span>
+            <span className="flex items-center gap-1 text-[10px] text-blue-600 font-semibold">
+              <span>New Tab</span>
+              <ExternalLink className="w-3 h-3" />
+            </span>
           </Link>
           <Link
             to="/roi-simulator/"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMobileMenuOpen(false)}
-            className={`w-full text-left py-2 px-3 rounded-lg flex items-center gap-2 font-medium text-sm ${
+            className={`w-full text-left py-2 px-3 rounded-lg flex items-center justify-between font-medium text-sm ${
               isActive('/roi-simulator') ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-slate-700 hover:bg-slate-50'
             }`}
           >
-            <BarChart3 className="w-4 h-4 text-blue-600" />
-            <span>Growth &amp; ROI Simulator</span>
+            <div className="flex items-center gap-2">
+              <BarChart3 className="w-4 h-4 text-blue-600" />
+              <span>Growth &amp; ROI Simulator</span>
+            </div>
+            <span className="flex items-center gap-1 text-[10px] text-blue-600 font-semibold">
+              <span>New Tab</span>
+              <ExternalLink className="w-3 h-3" />
+            </span>
           </Link>
 
           <Link
             to="/articles/"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMobileMenuOpen(false)}
-            className={`w-full text-left py-2 px-3 rounded-lg flex items-center gap-2 font-medium text-sm ${
+            className={`w-full text-left py-2 px-3 rounded-lg flex items-center justify-between font-medium text-sm ${
               isActive('/articles') ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-slate-700 hover:bg-slate-50'
             }`}
           >
-            <BookOpen className="w-4 h-4 text-blue-600" />
-            <span>All Articles &amp; Guides</span>
+            <div className="flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-blue-600" />
+              <span>All Articles &amp; Guides</span>
+            </div>
+            <span className="flex items-center gap-1 text-[10px] text-blue-600 font-semibold">
+              <span>New Tab</span>
+              <ExternalLink className="w-3 h-3" />
+            </span>
           </Link>
 
-          {/* Sub-articles */}
+          {/* Sub-articles (Each opens in a new tab with its unique URL) */}
           <div className="pl-4 py-1 space-y-1 border-l-2 border-slate-100 ml-2">
             {BLOG_ARTICLES.map((art) => (
               <Link
                 key={art.slug}
                 to={art.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full text-left py-1.5 px-2 rounded-lg text-xs font-medium text-slate-600 hover:bg-blue-50 hover:text-blue-700 flex items-center justify-between"
+                title={`Open ${art.title} in new tab`}
               >
                 <span className="truncate">{art.title}</span>
-                <ArrowRight className="w-3 h-3 text-slate-400 shrink-0 ml-2" />
+                <span className="flex items-center gap-1 text-[10px] text-blue-600 shrink-0 ml-2 font-semibold">
+                  <span>New Tab</span>
+                  <ExternalLink className="w-3 h-3" />
+                </span>
               </Link>
             ))}
           </div>
 
           <Link
             to="/copy-lab/"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMobileMenuOpen(false)}
-            className={`w-full text-left py-2 px-3 rounded-lg flex items-center gap-2 font-medium text-sm ${
+            className={`w-full text-left py-2 px-3 rounded-lg flex items-center justify-between font-medium text-sm ${
               isActive('/copy-lab') ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-slate-700 hover:bg-slate-50'
             }`}
           >
-            <Cpu className="w-4 h-4 text-blue-600" />
-            <span>Interactive Copy Lab</span>
+            <div className="flex items-center gap-2">
+              <Cpu className="w-4 h-4 text-blue-600" />
+              <span>Interactive Copy Lab</span>
+            </div>
+            <span className="flex items-center gap-1 text-[10px] text-blue-600 font-semibold">
+              <span>New Tab</span>
+              <ExternalLink className="w-3 h-3" />
+            </span>
           </Link>
 
           <Link
             to="/playbook/"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMobileMenuOpen(false)}
-            className={`w-full text-left py-2 px-3 rounded-lg block font-medium text-sm ${
+            className={`w-full text-left py-2 px-3 rounded-lg flex items-center justify-between font-medium text-sm ${
               isActive('/playbook') ? 'bg-blue-50 text-blue-700 font-semibold' : 'text-slate-700 hover:bg-slate-50'
             }`}
           >
-            90-Day Implementation Playbook
+            <span>90-Day Implementation Playbook</span>
+            <span className="flex items-center gap-1 text-[10px] text-blue-600 font-semibold">
+              <span>New Tab</span>
+              <ExternalLink className="w-3 h-3" />
+            </span>
           </Link>
           
           <div className="pt-3">

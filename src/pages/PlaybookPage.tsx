@@ -4,7 +4,7 @@ import { SEO_DATA } from '../config/seoConfig.ts';
 import { SectionPageHeader } from '../components/SectionPageHeader.tsx';
 import { StrategyPlaybook } from '../components/StrategyPlaybook.tsx';
 import { Link } from 'react-router-dom';
-import { ArrowRight, BarChart3, Target, Sparkles, CheckCircle2, ShieldCheck, HelpCircle } from 'lucide-react';
+import { ArrowRight, BarChart3, Target, Sparkles, CheckCircle2, ShieldCheck, HelpCircle, ExternalLink } from 'lucide-react';
 
 interface PlaybookPageProps {
   onOpenAudit: () => void;
@@ -105,32 +105,44 @@ export const PlaybookPage: React.FC<PlaybookPageProps> = ({ onOpenAudit }) => {
               </div>
             </div>
 
-            {/* Quick Navigation to Other Unique Sections */}
+            {/* Quick Navigation to Other Unique Sections - Opens in Separate Tabs */}
             <div className="mt-12 text-center">
               <p className="text-xs font-bold uppercase text-slate-400 tracking-wider mb-4">
-                Explore Corresponding Tools
+                Explore Corresponding Tools (Opens in New Tab)
               </p>
               <div className="inline-flex flex-wrap items-center justify-center gap-4">
                 <Link
                   to="/roi-simulator/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Opens Growth ROI Simulator in a new tab"
                   className="px-5 py-2.5 rounded-xl bg-white border border-slate-200 text-xs font-bold text-slate-700 hover:text-blue-600 hover:border-blue-300 shadow-sm transition-all flex items-center gap-2"
                 >
                   <BarChart3 className="w-4 h-4 text-blue-600" />
-                  <span>Simulate Your Growth ROI &rarr;</span>
+                  <span>Simulate Your Growth ROI</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
                 </Link>
                 <Link
                   to="/core-pillars/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Opens Core Pillars in a new tab"
                   className="px-5 py-2.5 rounded-xl bg-white border border-slate-200 text-xs font-bold text-slate-700 hover:text-blue-600 hover:border-blue-300 shadow-sm transition-all flex items-center gap-2"
                 >
                   <Target className="w-4 h-4 text-blue-600" />
-                  <span>The 6 Core Pillars &rarr;</span>
+                  <span>The 6 Core Pillars</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
                 </Link>
                 <Link
                   to="/articles/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Opens Articles & Guides in a new tab"
                   className="px-5 py-2.5 rounded-xl bg-white border border-slate-200 text-xs font-bold text-slate-700 hover:text-blue-600 hover:border-blue-300 shadow-sm transition-all flex items-center gap-2"
                 >
                   <Sparkles className="w-4 h-4 text-blue-600" />
-                  <span>Read In-Depth Guides &rarr;</span>
+                  <span>Read In-Depth Guides</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
                 </Link>
               </div>
             </div>

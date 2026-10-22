@@ -4,7 +4,7 @@ import { SEO_DATA } from '../config/seoConfig.ts';
 import { SectionPageHeader } from '../components/SectionPageHeader.tsx';
 import { AiCopySandbox } from '../components/AiCopySandbox.tsx';
 import { Link } from 'react-router-dom';
-import { Sparkles, ArrowRight, Layers, BookOpen, Rocket } from 'lucide-react';
+import { Sparkles, ArrowRight, Layers, BookOpen, Rocket, ExternalLink } from 'lucide-react';
 
 interface CopyLabPageProps {
   onOpenAudit?: () => void;
@@ -95,9 +95,13 @@ export const CopyLabPage: React.FC<CopyLabPageProps> = () => {
               </div>
               <Link
                 to="/blog/ai-marketing-tools-for-beginners/"
-                className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold whitespace-nowrap transition-all shadow-sm"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold whitespace-nowrap transition-all shadow-sm"
+                title="Opens in new tab"
               >
-                Read AI Marketing Tools Guide &rarr;
+                <span>Read AI Marketing Tools Guide</span>
+                <ExternalLink className="w-3.5 h-3.5" />
               </Link>
             </div>
           </div>

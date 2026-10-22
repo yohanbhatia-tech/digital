@@ -35,7 +35,26 @@ Add a global `ScrollToTop` helper component inside `App.tsx` that triggers on ro
 - Active link highlighting will accurately reflect the currently active page.
 - Section switcher in `SectionPageHeader.tsx` allows seamless 1-click tab jumping across all sections with active states.
 
-### 5. Verification & Testing
-- Test that every link in the Navbar, Mobile Drawer, Hero, Section cards, and Footer updates the browser URL and renders the corresponding standalone page.
-- Confirm zero broken links or in-page scroll traps.
-- Ensure build passes with `compile_applet`.
+### 5. Multi-Tab Navigation Architecture ("Open Every Part in a Different Tab")
+- **Every part of the website** has its own dedicated, permanent URL and opens in a new browser tab (`target="_blank" rel="noopener noreferrer"`):
+  - `/what-is-ai-marketing/` &rarr; Opens in new tab with external link indicator
+  - `/core-pillars/` &rarr; Opens in new tab with external link indicator
+  - `/roi-simulator/` &rarr; Opens in new tab with external link indicator
+  - `/copy-lab/` &rarr; Opens in new tab with external link indicator
+  - `/playbook/` &rarr; Opens in new tab with external link indicator
+  - `/articles/` &rarr; Opens in new tab with external link indicator
+  - `/blog/ai-marketing-tools-for-beginners/` &rarr; Opens in new tab
+  - `/blog/seo-for-beginners/` &rarr; Opens in new tab
+  - `/blog/ai-content-marketing-strategy/` &rarr; Opens in new tab
+- **Global Link Enhancements**:
+  - `Navbar.tsx` (desktop nav, mobile menu, and publication dropdown) updated with `target="_blank" rel="noopener noreferrer"`, `title="..."`, and `ExternalLink` icons.
+  - `Hero.tsx` CTA buttons ("Simulate Growth ROI", "Explore AI Capabilities") configured to open in new tabs with visual indicators.
+  - `HomePage.tsx` module showcase cards, direct answer links, and featured publication tabs open in separate browser tabs.
+  - `SectionPageHeader.tsx` quick navigator tabs open non-active sections in new tabs while highlighting active section state.
+  - `Footer.tsx` (Intelligence column, Guides column, and bottom links) updated to open target pages in new tabs.
+  - Standalone section pages and deep-dive articles cross-link to sibling modules and calculators in new tabs.
+
+### 6. Verification & Testing
+- Confirmed all navigation items and cards across Navbar, Hero, Homepage, Section headers, and Footer possess `target="_blank" rel="noopener noreferrer"` and clean URLs.
+- Ran `lint_applet` (`tsc --noEmit`): Clean with zero errors.
+- Ran `compile_applet` (Vite production build): Succeeded with zero errors.

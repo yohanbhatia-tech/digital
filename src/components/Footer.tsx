@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, ArrowRight } from 'lucide-react';
+import { Sparkles, ArrowRight, ExternalLink } from 'lucide-react';
 import { BLOG_ARTICLES } from '../data/articlesData.ts';
 
 interface FooterProps {
@@ -40,28 +40,63 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAudit }) => {
             </h4>
             <ul className="space-y-2.5 text-sm text-slate-600">
               <li>
-                <Link to="/what-is-ai-marketing/" className="hover:text-blue-600 transition-colors">
-                  What is AI Marketing
+                <Link 
+                  to="/what-is-ai-marketing/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-600 transition-colors inline-flex items-center gap-1.5 group"
+                  title="Opens What is AI Marketing in a new tab"
+                >
+                  <span>What is AI Marketing</span>
+                  <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover:text-blue-600 shrink-0" />
                 </Link>
               </li>
               <li>
-                <Link to="/core-pillars/" className="hover:text-blue-600 transition-colors">
-                  The 6 Core Pillars
+                <Link 
+                  to="/core-pillars/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-600 transition-colors inline-flex items-center gap-1.5 group"
+                  title="Opens Core Pillars in a new tab"
+                >
+                  <span>The 6 Core Pillars</span>
+                  <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover:text-blue-600 shrink-0" />
                 </Link>
               </li>
               <li>
-                <Link to="/roi-simulator/" className="hover:text-blue-600 transition-colors">
-                  Growth &amp; ROI Simulator
+                <Link 
+                  to="/roi-simulator/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-600 transition-colors inline-flex items-center gap-1.5 group"
+                  title="Opens ROI Simulator in a new tab"
+                >
+                  <span>Growth &amp; ROI Simulator</span>
+                  <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover:text-blue-600 shrink-0" />
                 </Link>
               </li>
               <li>
-                <Link to="/copy-lab/" className="hover:text-blue-600 transition-colors">
-                  Interactive Copy Lab
+                <Link 
+                  to="/copy-lab/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-600 transition-colors inline-flex items-center gap-1.5 group"
+                  title="Opens Interactive Copy Lab in a new tab"
+                >
+                  <span>Interactive Copy Lab</span>
+                  <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover:text-blue-600 shrink-0" />
                 </Link>
               </li>
               <li>
-                <Link to="/playbook/" className="hover:text-blue-600 transition-colors">
-                  90-Day Implementation Playbook
+                <Link 
+                  to="/playbook/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-600 transition-colors inline-flex items-center gap-1.5 group"
+                  title="Opens 90-Day Implementation Playbook in a new tab"
+                >
+                  <span>90-Day Implementation Playbook</span>
+                  <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover:text-blue-600 shrink-0" />
                 </Link>
               </li>
             </ul>
@@ -74,18 +109,28 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAudit }) => {
             </h4>
             <ul className="space-y-2.5 text-sm text-slate-600">
               <li>
-                <Link to="/articles/" className="hover:text-blue-600 font-semibold text-blue-600 transition-colors">
-                  All Publications Index &rarr;
+                <Link 
+                  to="/articles/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-600 font-semibold text-blue-600 transition-colors inline-flex items-center gap-1"
+                  title="Opens All Publications Index in a new tab"
+                >
+                  <span>All Publications Index</span>
+                  <ExternalLink className="w-3 h-3" />
                 </Link>
               </li>
               {BLOG_ARTICLES.map((article) => (
                 <li key={article.slug}>
                   <Link 
                     to={article.url} 
-                    className="hover:text-blue-600 transition-colors line-clamp-1"
-                    title={article.title}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-blue-600 transition-colors line-clamp-1 inline-flex items-center gap-1 group"
+                    title={`Open "${article.title}" in new tab`}
                   >
-                    {article.title}
+                    <span className="truncate">{article.title}</span>
+                    <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover:text-blue-600 shrink-0" />
                   </Link>
                 </li>
               ))}
@@ -117,14 +162,35 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAudit }) => {
             &copy; {new Date().getFullYear()} Digital Growth Lab. All rights reserved.
           </div>
           <div className="flex items-center gap-6">
-            <Link to="/articles/" className="hover:text-blue-600 transition-colors">
-              Publications
+            <Link 
+              to="/articles/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-600 transition-colors inline-flex items-center gap-1"
+              title="Opens Publications in a new tab"
+            >
+              <span>Publications</span>
+              <ExternalLink className="w-2.5 h-2.5 text-slate-400" />
             </Link>
-            <Link to="/roi-simulator/" className="hover:text-blue-600 transition-colors">
-              ROI Calculator
+            <Link 
+              to="/roi-simulator/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-600 transition-colors inline-flex items-center gap-1"
+              title="Opens ROI Calculator in a new tab"
+            >
+              <span>ROI Calculator</span>
+              <ExternalLink className="w-2.5 h-2.5 text-slate-400" />
             </Link>
-            <Link to="/playbook/" className="hover:text-blue-600 transition-colors">
-              Roadmap
+            <Link 
+              to="/playbook/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-600 transition-colors inline-flex items-center gap-1"
+              title="Opens Roadmap in a new tab"
+            >
+              <span>Roadmap</span>
+              <ExternalLink className="w-2.5 h-2.5 text-slate-400" />
             </Link>
           </div>
         </div>

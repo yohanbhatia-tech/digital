@@ -15,7 +15,8 @@ import {
   Cpu, 
   Globe, 
   Zap, 
-  ShieldCheck 
+  ShieldCheck,
+  ExternalLink
 } from 'lucide-react';
 
 interface ArticleSeoProps {
@@ -289,7 +290,18 @@ export const ArticleSeo: React.FC<ArticleSeoProps> = ({ onOpenAudit }) => {
         </p>
 
         <p className="text-base text-slate-700 leading-relaxed">
-          To model how organic traffic efficiency boosts your blended acquisition costs, visit the <Link to="/" className="text-blue-600 font-semibold underline decoration-blue-300 hover:text-blue-800">Digital Growth Lab homepage</Link> and test our interactive <strong>Growth &amp; ROI Simulator</strong>. When you combine steady organic rankings with algorithmic conversion intelligence, your customer acquisition costs drop while customer lifetime value expands.
+          To model how organic traffic efficiency boosts your blended acquisition costs, test our interactive{' '}
+          <Link 
+            to="/roi-simulator/" 
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Opens Growth ROI Simulator in a new tab"
+            className="text-blue-600 font-semibold underline decoration-blue-300 hover:text-blue-800 inline-flex items-center gap-1"
+          >
+            <span>Growth &amp; ROI Simulator</span>
+            <ExternalLink className="w-3.5 h-3.5 text-blue-500 inline" />
+          </Link>
+          . When you combine steady organic rankings with algorithmic conversion intelligence, your customer acquisition costs drop while customer lifetime value expands.
         </p>
 
       </ArticleLayout>

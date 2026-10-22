@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, ArrowLeft } from 'lucide-react';
+import { ChevronRight, ArrowLeft, ExternalLink } from 'lucide-react';
 
 interface SectionPageHeaderProps {
   badge: string;
@@ -55,24 +55,32 @@ export const SectionPageHeader: React.FC<SectionPageHeaderProps> = ({
           </p>
         </div>
 
-        {/* Section Quick Navigator: Clean Segmented Menu */}
-        <div className="mt-8 pt-6 border-t border-slate-200/60 flex items-center gap-1.5 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
-          <span className="text-xs font-semibold text-slate-400 mr-2 shrink-0">
-            Sections:
+        {/* Section Quick Navigator: Clean Segmented Menu (Opens sections in separate tabs) */}
+        <div className="mt-8 pt-6 border-t border-slate-200/60 flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
+          <span className="text-xs font-semibold text-slate-400 mr-1 shrink-0">
+            Open in New Tab:
           </span>
           {sections.map((sec) => {
             const isActive = activePath === sec.path;
-            return (
+            return isActive ? (
+              <span
+                key={sec.path}
+                className="px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap bg-blue-600 text-white shadow-sm flex items-center gap-1.5"
+              >
+                <span>{sec.label}</span>
+                <span className="text-[10px] opacity-80">(Active)</span>
+              </span>
+            ) : (
               <Link
                 key={sec.path}
                 to={sec.path}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
-                  isActive
-                    ? 'bg-blue-600 text-white shadow-sm'
-                    : 'bg-white text-slate-600 border border-slate-200/80 hover:border-blue-300 hover:text-blue-600'
-                }`}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`Opens ${sec.label} in a new tab`}
+                className="px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all bg-white text-slate-600 border border-slate-200/80 hover:border-blue-300 hover:text-blue-600 inline-flex items-center gap-1.5 shadow-xs"
               >
-                {sec.label}
+                <span>{sec.label}</span>
+                <ExternalLink className="w-3 h-3 text-slate-400" />
               </Link>
             );
           })}

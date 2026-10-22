@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, TrendingUp, Sparkles } from 'lucide-react';
+import { ArrowRight, TrendingUp, Sparkles, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface HeroProps {
@@ -43,21 +43,28 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAudit }) => {
             </p>
           </div>
 
-          {/* Clean Primary & Secondary CTA Actions */}
+          {/* Clean Primary & Secondary CTA Actions - Each Opens in a Different Tab */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
             <Link
               to="/roi-simulator/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Opens Growth ROI Simulator in a new tab"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-base shadow-sm hover:shadow-md hover:shadow-blue-500/20 transition-all cursor-pointer"
             >
               <TrendingUp className="w-5 h-5" />
               <span>Simulate Growth ROI</span>
-              <ArrowRight className="w-4 h-4 ml-0.5" />
+              <ExternalLink className="w-4 h-4 ml-0.5 opacity-80" />
             </Link>
             <Link
               to="/what-is-ai-marketing/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Opens What is AI Marketing in a new tab"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-semibold text-base border border-slate-200/80 shadow-sm hover:border-blue-300 hover:text-blue-600 transition-all cursor-pointer"
             >
               <span>Explore AI Capabilities</span>
+              <ExternalLink className="w-4 h-4 ml-0.5 text-slate-400" />
             </Link>
           </div>
 

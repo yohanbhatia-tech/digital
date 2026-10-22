@@ -15,7 +15,8 @@ import {
   Share2, 
   Target, 
   Zap, 
-  ShieldCheck 
+  ShieldCheck,
+  ExternalLink
 } from 'lucide-react';
 
 interface ArticleContentStrategyProps {
@@ -306,7 +307,29 @@ export const ArticleContentStrategy: React.FC<ArticleContentStrategyProps> = ({ 
         </p>
 
         <p className="text-base text-slate-700 leading-relaxed">
-          Ready to see how content velocity and algorithmic ad optimization compound your bottom line? Explore our interactive tools on the <Link to="/" className="text-blue-600 font-semibold underline decoration-blue-300 hover:text-blue-800">Digital Growth Lab homepage</Link>, where you can test our <strong>Growth &amp; ROI Simulator</strong>, evaluate our 90-day execution framework, or request an instant AI Readiness Diagnostic.
+          Ready to see how content velocity and algorithmic ad optimization compound your bottom line? Explore our interactive tools including the{' '}
+          <Link 
+            to="/roi-simulator/" 
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Opens Growth ROI Simulator in a new tab"
+            className="text-blue-600 font-semibold underline decoration-blue-300 hover:text-blue-800 inline-flex items-center gap-1"
+          >
+            <span>Growth &amp; ROI Simulator</span>
+            <ExternalLink className="w-3.5 h-3.5 text-blue-500 inline" />
+          </Link>
+          , evaluate our{' '}
+          <Link 
+            to="/playbook/" 
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Opens 90-Day Implementation Playbook in a new tab"
+            className="text-blue-600 font-semibold underline decoration-blue-300 hover:text-blue-800 inline-flex items-center gap-1"
+          >
+            <span>90-Day Execution Playbook</span>
+            <ExternalLink className="w-3.5 h-3.5 text-blue-500 inline" />
+          </Link>
+          , or request an instant AI Readiness Diagnostic.
         </p>
 
       </ArticleLayout>

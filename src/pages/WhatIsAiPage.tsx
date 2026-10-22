@@ -4,7 +4,7 @@ import { SEO_DATA } from '../config/seoConfig.ts';
 import { SectionPageHeader } from '../components/SectionPageHeader.tsx';
 import { WhatIsAiMarketing } from '../components/WhatIsAiMarketing.tsx';
 import { Link } from 'react-router-dom';
-import { ArrowRight, BarChart3, Target, Rocket } from 'lucide-react';
+import { ArrowRight, BarChart3, Target, Rocket, ExternalLink } from 'lucide-react';
 
 interface WhatIsAiPageProps {
   onOpenAudit: () => void;
@@ -46,13 +46,20 @@ export const WhatIsAiPage: React.FC<WhatIsAiPageProps> = ({ onOpenAudit }) => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Link
                 to="/core-pillars/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Opens Core Pillars in a new tab"
                 className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all group"
               >
-                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold mb-3 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                  <Target className="w-5 h-5" />
+                <div className="flex items-center justify-between mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <Target className="w-5 h-5" />
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600" />
                 </div>
-                <h4 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                  The 6 Core Pillars &rarr;
+                <h4 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors flex items-center justify-between">
+                  <span>The 6 Core Pillars</span>
+                  <span className="text-xs text-blue-600 font-semibold">New Tab &rarr;</span>
                 </h4>
                 <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
                   Inspect the six disciplines: creative synthesis, predictive bidding, LTV modeling, conversational leads, GEO, and MMM.
@@ -61,13 +68,20 @@ export const WhatIsAiPage: React.FC<WhatIsAiPageProps> = ({ onOpenAudit }) => {
 
               <Link
                 to="/roi-simulator/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Opens Growth & ROI Simulator in a new tab"
                 className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all group"
               >
-                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold mb-3 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                  <BarChart3 className="w-5 h-5" />
+                <div className="flex items-center justify-between mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <BarChart3 className="w-5 h-5" />
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600" />
                 </div>
-                <h4 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                  Growth &amp; ROI Simulator &rarr;
+                <h4 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors flex items-center justify-between">
+                  <span>Growth &amp; ROI Simulator</span>
+                  <span className="text-xs text-blue-600 font-semibold">New Tab &rarr;</span>
                 </h4>
                 <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
                   Calculate estimated revenue expansion and hours saved by deploying machine-learning ad algorithms.
@@ -76,13 +90,20 @@ export const WhatIsAiPage: React.FC<WhatIsAiPageProps> = ({ onOpenAudit }) => {
 
               <Link
                 to="/playbook/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Opens 90-Day Implementation Playbook in a new tab"
                 className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all group"
               >
-                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold mb-3 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                  <Rocket className="w-5 h-5" />
+                <div className="flex items-center justify-between mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <Rocket className="w-5 h-5" />
+                  </div>
+                  <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600" />
                 </div>
-                <h4 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                  90-Day Implementation Playbook &rarr;
+                <h4 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors flex items-center justify-between">
+                  <span>90-Day Playbook</span>
+                  <span className="text-xs text-blue-600 font-semibold">New Tab &rarr;</span>
                 </h4>
                 <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
                   Follow the structured three-phase blueprint to transition your team to autonomous execution.

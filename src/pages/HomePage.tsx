@@ -130,9 +130,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
                   To explore the deep theoretical foundations and compare manual workflows against automated systems, read our dedicated standalone guide on{' '}
                   <Link
                     to="/what-is-ai-marketing/"
-                    className="text-blue-600 font-semibold underline decoration-blue-300 hover:text-blue-800"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 font-semibold underline decoration-blue-300 hover:text-blue-800 inline-flex items-center gap-1"
+                    title="Opens 'What is AI Marketing' in a new tab"
                   >
-                    What is AI Marketing
+                    <span>What is AI Marketing</span>
+                    <ExternalLink className="w-3 h-3 text-blue-500 inline" />
                   </Link>
                   .
                 </p>
@@ -162,26 +166,37 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
                   Emerging trends reveal that high-performing teams combine automated algorithmic paid media with comprehensive organic search authority. Integrating predictive audience modeling with a verified{' '}
                   <Link
                     to="/blog/ai-content-marketing-strategy/"
-                    className="text-blue-600 font-semibold underline decoration-blue-300 hover:text-blue-800"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 font-semibold underline decoration-blue-300 hover:text-blue-800 inline-flex items-center gap-0.5"
+                    title="Opens AI Content Marketing Strategy in a new tab"
                   >
-                    AI content marketing strategy
+                    <span>AI content marketing strategy</span>
+                    <ExternalLink className="w-3 h-3 inline text-blue-500" />
                   </Link>{' '}
                   and solid{' '}
                   <Link
                     to="/blog/seo-for-beginners/"
-                    className="text-blue-600 font-semibold underline decoration-blue-300 hover:text-blue-800"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 font-semibold underline decoration-blue-300 hover:text-blue-800 inline-flex items-center gap-0.5"
+                    title="Opens SEO for Beginners in a new tab"
                   >
-                    SEO for beginners
+                    <span>SEO for beginners</span>
+                    <ExternalLink className="w-3 h-3 inline text-blue-500" />
                   </Link>{' '}
                   guarantees sustainable acquisition across both paid algorithms and AI answer engines like ChatGPT and Perplexity.
                 </p>
                 <div className="pt-2">
                   <Link
                     to="/core-pillars/"
-                    className="inline-flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-800"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 hover:text-blue-800"
+                    title="Opens Core Pillars in a new tab"
                   >
                     <span>Inspect the 6 core pillars supporting these strategies</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ExternalLink className="w-4 h-4" />
                   </Link>
                 </div>
               </div>
@@ -190,7 +205,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
         </div>
       </section>
 
-      {/* Standalone Section Directory Hub - Every Section Opens on a Standalone URL */}
+      {/* Standalone Section Directory Hub - Every Section Opens on a Standalone URL in a New Tab */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4 pb-6 border-b border-slate-100">
@@ -202,11 +217,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
                 Digital Growth Lab Modules
               </h2>
               <p className="text-sm text-slate-600 mt-1 max-w-2xl">
-                Each section functions as a dedicated standalone tool and resource, reachable via its own persistent URL.
+                Each module has its own unique, permanent URL and opens in a separate browser tab for focused exploration.
               </p>
             </div>
-            <div className="text-xs font-semibold text-slate-400">
-              6 Dedicated Standalone Routes
+            <div className="text-xs font-semibold text-blue-600 flex items-center gap-1.5 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+              <ExternalLink className="w-3.5 h-3.5" />
+              <span>All 6 Modules Open in New Tabs</span>
             </div>
           </div>
 
@@ -223,13 +239,27 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
                       <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors shadow-sm">
                         <IconComp className="w-6 h-6" />
                       </div>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                        {sec.badge}
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                          {sec.badge}
+                        </span>
+                        <span className="px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 font-bold text-[10px] flex items-center gap-1 border border-blue-100">
+                          <span>New Tab</span>
+                          <ExternalLink className="w-2.5 h-2.5" />
+                        </span>
+                      </div>
                     </div>
 
                     <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2.5">
-                      {sec.title}
+                      <Link
+                        to={sec.path}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline flex items-center justify-between gap-2"
+                        title={`Opens ${sec.title} in a new tab`}
+                      >
+                        <span>{sec.title}</span>
+                      </Link>
                     </h3>
                     <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
                       {sec.description}
@@ -239,10 +269,16 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
                   <div className="pt-5 border-t border-slate-100">
                     <Link
                       to={sec.path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`Opens ${sec.title} on unique URL ${sec.path} in a new tab`}
                       className="w-full inline-flex items-center justify-between py-2.5 px-4 rounded-xl bg-slate-50 hover:bg-blue-600 text-slate-700 hover:text-white text-xs font-bold transition-all group/btn"
                     >
-                      <span>{sec.cta}</span>
-                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                      <span className="flex items-center gap-1.5">
+                        <span>{sec.cta}</span>
+                        <span className="text-[10px] font-normal opacity-70">({sec.path})</span>
+                      </span>
+                      <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
                     </Link>
                   </div>
                 </div>
@@ -269,11 +305,37 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
             </div>
             <Link
               to="/articles/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-800"
+              title="Opens All Publications index in a new tab"
             >
               <span>View All Publications</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ExternalLink className="w-3.5 h-3.5" />
             </Link>
+          </div>
+
+          {/* Article Tab Strip - Opens each article on a unique URL in a new tab */}
+          <div className="mb-8 p-3 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-2 text-xs font-bold text-slate-700">
+              <BookOpen className="w-4 h-4 text-blue-600 shrink-0" />
+              <span>Article Quick Tabs (Opens unique URL in a new tab):</span>
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              {BLOG_ARTICLES.map((art) => (
+                <Link
+                  key={art.slug}
+                  to={art.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 text-xs font-semibold text-slate-700 hover:text-blue-600 shadow-xs transition-all"
+                  title={`Open ${art.title} in new tab`}
+                >
+                  <span className="truncate max-w-[150px]">{art.title.split(':')[0]}</span>
+                  <ExternalLink className="w-3 h-3 text-blue-600 shrink-0" />
+                </Link>
+              ))}
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -287,11 +349,21 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
                     <span className="text-blue-600 font-bold uppercase tracking-wider">
                       {article.category}
                     </span>
-                    <span>{article.readTime}</span>
+                    <span className="px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 font-bold text-[10px] flex items-center gap-1 border border-blue-100">
+                      <span>New Tab</span>
+                      <ExternalLink className="w-2.5 h-2.5" />
+                    </span>
                   </div>
 
                   <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-3 leading-snug">
-                    <Link to={article.url}>{article.title}</Link>
+                    <Link 
+                      to={article.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:underline flex items-start justify-between gap-1.5"
+                    >
+                      <span>{article.title}</span>
+                    </Link>
                   </h3>
 
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3 mb-6">
@@ -301,14 +373,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
 
                 <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                   <div className="text-[11px] text-slate-400">
-                    By {article.author.name}
+                    By {article.author.name} · {article.readTime}
                   </div>
                   <Link
                     to={article.url}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-800"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-800"
+                    title="Open article in a new tab"
                   >
                     <span>Read Guide</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ExternalLink className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </article>
@@ -340,9 +415,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAudit }) => {
               </button>
               <Link
                 to="/roi-simulator/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Opens Growth ROI Simulator in a new tab"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-sm border border-slate-700 transition-all cursor-pointer"
               >
                 <span>Test ROI Simulator First</span>
+                <ExternalLink className="w-3.5 h-3.5 opacity-70" />
               </Link>
             </div>
           </div>
